@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function page() {
   return (
-    <div>About</div>
+    <h1 className=' h-screen grid place-content-center text-5xl  '>About</h1>
   )
 }
 

@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function page() {
   return (
-    <div>Contact</div>
+    <h1 className=' h-screen grid place-content-center text-5xl  '>Contact</h1>
   )
 }

@@ -4,9 +4,12 @@
 import Link from "next/link";
 import { Navbar } from "flowbite-react";
 import myArray from "@/component/pathNavbar";
+import { usePathname } from "next/navigation";
+
 
 
 function NavbarComponent() {
+  const path = usePathname();
   return (
     <Navbar fluid rounded>
       <Navbar.Brand as={Link} href="/">
@@ -19,7 +22,7 @@ function NavbarComponent() {
 
         {myArray.map(
           (item) => (
-            <Navbar.Link className=" text-lg font-semibold" href={item.path}>
+            <Navbar.Link className=" text-lg font-semibold" href={item.path} active={item.path == path}>
               {item.title}
             </Navbar.Link>
             )

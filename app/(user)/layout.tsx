@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/app/globals.css";
 import NavbarComponent from "@/component/NavbarComponent";
+import { Suspense } from "react";
+import Loading from './loading';
+import { localCustomFont, suwannaphum } from "./fonts";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,10 +23,13 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <NavbarComponent/>
-        {children}
-      
+      <body className={` ${suwannaphum.variable} ${localCustomFont.variable}`}>
+        <header className=" sticky top-0  ">
+          <NavbarComponent />
+        </header>
+        <Suspense fallback={<Loading />}>
+          {children}
+        </Suspense>
       </body>
     </html>
   );
