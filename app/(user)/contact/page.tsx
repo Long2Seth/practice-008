@@ -1,4 +1,11 @@
 import React from 'react'
+import { Metadata } from 'next';
+
+
+export const metadata: Metadata = {
+  title: "ISTAD Ecommerce Contact page ",
+  description: "ISTAD Ecommerce Web ",
+};
 
 export default function page() {
   return (

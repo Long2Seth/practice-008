@@ -29,7 +29,7 @@ export default function Page() {
   }
 
   return (
-    <div className=' grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 justify-center gap-5 m-16'>
+    <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center gap-5 m-16'>
       {getData.map((item:any, index) => (
         <ProductCardComponent
           onClick={() => router.push(`/service/${item.id}`)}

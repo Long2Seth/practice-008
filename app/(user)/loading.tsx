@@ -4,12 +4,7 @@ import Image from 'next/image'
 export default function Loading() {
     return (
         <div className='h-screen grid place-content-center'>
-      <Image
-        src="https://i.stack.imgur.com/kOnzy.gif"
-        alt="Loading"
-        width={100}
-        height={100}
-      />
+      <img src="	https://i.pinimg.com/originals/4e/8c/91/4e8c9197c64747175890b4f8cd740bb7.gif" alt="loading" />
       <h1 className='text-5xl font-bold'>
         Loading ....
       </h1>

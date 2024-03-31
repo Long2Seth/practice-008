@@ -1,46 +1,54 @@
-import React, { useEffect, useState } from 'react';
-import { Card } from 'flowbite-react';
-import CardDetailComponent from '@/component/CardDetailComponent';
+import CardComponent from "@/component/CardDetailComponent";
+import { Metadata, ResolvingMetadata } from "next";
 
-type PropsType = {
-    params: {
-        id: number
-    }
-    search: string,
+type Props = {
+	params: { id: string };
+	searchParams: { [key: string]: string | string[] | undefined };
+};
+
+const ENDPOINT = "https://fakestoreapi.com/products/";
+
+const getData = async (id: string) => {
+	const res = await fetch(`${ENDPOINT}${id}`);
+	const data = await res.json();
+	console.log(data);
+	return data;
+};
+
+export async function generateMetadata(
+	{ params, searchParams }: Props,
+	parent: ResolvingMetadata
+): Promise<Metadata> {
+	// read route params
+	const id = params.id;
+
+	// fetch data
+	const product = await fetch(`https://fakestoreapi.com/products/${id}`).then((res) => res.json());
+
+	
+
+	return {
+		title: product.title,
+		description: product.description,
+		openGraph: {
+			images: product.image,
+		},
+	};
 }
 
-const ENDPOINT = 'https://fakestoreapi.com/products/';
+export default async function Detail(props: Props) {
+	let data = await getData(props.params.id);
 
-export const getData = async (id: number) => {
-    const response = await fetch(`${ENDPOINT}${id}`);
-    const data = await response.json();
-    return data;
+	return (
+		<div className="h-screen grid place-content-center">
+			<CardComponent
+				title={data?.title || "NoTitle"}
+				description={data?.description || "No Description"}
+				image={
+					data?.image ||
+					"https://i0.wp.com/sunrisedaycamp.org/wp-content/uploads/2020/10/placeholder.png?ssl=1"
+				}
+			/>
+		</div>
+	);
 }
-
-const Page: React.FC<PropsType> = (props) => {
-    const [data, setData] = useState<any>(null);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const result = await getData(props.params.id);
-            setData(result);
-        };
-        fetchData();
-    }, [props.params.id]);
-
-    if (!data) {
-        return <div>Loading...</div>;
-    }
-
-    return (
-        <div className='h-screen grid place-content-center justify-center '>
-            <CardDetailComponent
-                title={data.title}
-                description={data.description}
-                image={data.image}
-            />
-        </div>
-    );
-}
-
-export default Page;
