@@ -1,0 +1,6 @@
+User-Agent: *
+Allow: /
+Disallow: /private/
+Disallow: /dashboard
+
+Sitemap: https://practice-008-git-main-longpiseth2002s-projects.vercel.app/sitemap.xml
