@@ -12,6 +12,11 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "ISTAD Ecommerce Web",
   description: "ISTAD Ecommerce Web is a web application for selling products",
+  openGraph: {
+    title: "ISTAD Ecommerce Web",
+    description: "ISTAD Ecommerce Web is a web application for selling products",
+    images: 'https://www.investopedia.com/thmb/0qyIIbRIyurxi2hM…p_icc()/Next-34195cff976d449e81e137dfa8ba25b1.jpg'
+  },
 };
 
 export default function RootLayout({
