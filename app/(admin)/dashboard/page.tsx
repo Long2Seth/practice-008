@@ -1,7 +1,10 @@
+import DashBoardComponent from '@/component/DashBoard'
 import React from 'react'
 
 export default function page() {
   return (
-    <div>Dashboard Page</div>
+    <>
+    <DashBoardComponent/>
+    </>
   )
 }
